@@ -1,0 +1,94 @@
+// ===== Живая школа — интерактив =====
+(function () {
+  "use strict";
+
+  // Залипающая шапка — тень при скролле
+  var header = document.getElementById("header");
+  window.addEventListener("scroll", function () {
+    header.classList.toggle("scrolled", window.scrollY > 10);
+  });
+
+  // Мобильное меню
+  var burger = document.getElementById("burger");
+  var menu = document.getElementById("menu");
+  burger.addEventListener("click", function () {
+    menu.classList.toggle("open");
+  });
+  // Закрыть меню по клику на ссылку
+  menu.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      menu.classList.remove("open");
+    });
+  });
+
+  // Аккордеон методик
+  document.querySelectorAll(".acc-head").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".acc-item.open").forEach(function (i) {
+        i.classList.remove("open");
+      });
+      if (!isOpen) item.classList.add("open");
+    });
+  });
+
+  // Лайтбокс галереи
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll("#gallery-grid a")
+  );
+  var lb = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lb-img");
+  var current = 0;
+
+  function openLb(i) {
+    current = (i + links.length) % links.length;
+    lbImg.src = links[current].getAttribute("data-full");
+    lbImg.alt = links[current].querySelector("img").alt || "";
+    lb.classList.add("open");
+  }
+  function closeLb() {
+    lb.classList.remove("open");
+  }
+  links.forEach(function (a, i) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      openLb(i);
+    });
+  });
+  document.getElementById("lb-close").addEventListener("click", closeLb);
+  document.getElementById("lb-next").addEventListener("click", function () {
+    openLb(current + 1);
+  });
+  document.getElementById("lb-prev").addEventListener("click", function () {
+    openLb(current - 1);
+  });
+  lb.addEventListener("click", function (e) {
+    if (e.target === lb) closeLb();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeLb();
+    if (e.key === "ArrowRight") openLb(current + 1);
+    if (e.key === "ArrowLeft") openLb(current - 1);
+  });
+
+  // Форма заявки -> открываем WhatsApp с заполненным текстом
+  var form = document.getElementById("lead-form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = (form.name.value || "").trim();
+      var phone = (form.phone.value || "").trim();
+      var msg = (form.msg.value || "").trim();
+      var text =
+        "Здравствуйте! Хочу записаться/узнать о Живой школе.\n" +
+        "Имя: " + name + "\nТелефон: " + phone +
+        (msg ? "\nВопрос: " + msg : "");
+      var url = "https://wa.me/79324720279?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener");
+      form.reset();
+      alert("Спасибо! Откроется WhatsApp — отправьте сообщение, и мы свяжемся с вами.");
+    });
+  }
+})();
