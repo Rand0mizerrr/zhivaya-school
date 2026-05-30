@@ -91,4 +91,22 @@
       alert("Спасибо! Откроется WhatsApp — отправьте сообщение, и мы свяжемся с вами.");
     });
   }
+
+  // Фильтр материалов «Родительского клуба» по темам
+  var filters = document.getElementById("club-filters");
+  if (filters) {
+    var chips = filters.querySelectorAll(".chip");
+    var cards = document.querySelectorAll("#res-grid .res-card");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+        var cat = chip.getAttribute("data-cat");
+        cards.forEach(function (card) {
+          var show = cat === "all" || card.getAttribute("data-cat") === cat;
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+  }
 })();
