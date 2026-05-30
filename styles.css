@@ -236,3 +236,31 @@ p{margin:0 0 1em}
   .cta-band{padding:34px 22px}
   .hero__inner{padding:80px 20px 90px}
 }
+
+/* ===== Плашка-объявление (летний лагерь) ===== */
+.announce{background:linear-gradient(90deg,#e8962c,#d98a3d);color:#fff}
+.announce a{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;
+  padding:11px 16px;font-weight:700;font-size:.97rem;text-align:center}
+.announce a:hover{background:rgba(0,0,0,.07)}
+.announce .spark{animation:spark 1.6s ease-in-out infinite;display:inline-block}
+.announce .go{text-decoration:underline;text-underline-offset:3px}
+@keyframes spark{0%,100%{transform:scale(1)}50%{transform:scale(1.25) rotate(8deg)}}
+
+/* пункт меню «Летний лагерь» — выделенный */
+.menu>li.hot>a{color:#fff;background:var(--accent);font-weight:800}
+.menu>li.hot>a:hover{background:var(--accent-dark);color:#fff}
+
+/* ===== Секция «Летний лагерь» ===== */
+.camp{background:linear-gradient(135deg,#fff4e4 0%,#fde7c9 100%)}
+.camp .split{align-items:center}
+.camp .badge-hot{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
+  font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.camp h2{color:#9a5a16}
+.camp__chips{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 8px}
+.camp__chip{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid #f1ddbf;
+  border-radius:12px;padding:12px 14px;font-weight:600;font-size:.95rem;color:#5a4326}
+.camp__chip .i{font-size:1.35rem;flex:0 0 auto}
+.camp__note{margin:16px 0 22px;font-size:.97rem;color:#8a5a1e}
+.camp__media img{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;object-fit:cover;max-height:440px}
+.camp__actions{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:760px){ .camp__chips{grid-template-columns:1fr} }
