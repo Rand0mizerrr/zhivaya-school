@@ -292,14 +292,17 @@
     <!-- Сюда подгрузится виджет отзывов 2ГИС (код подключается внизу страницы) -->
     <div id="reviews-2gis" style="margin-top:30px"></div>
 
-    <!-- Запасной блок: показывается, пока виджет 2ГИС не настроен/не загрузился -->
+    <!-- Блок с рейтингом 2ГИС. Показывается, пока не подключён полноценный виджет отзывов.
+         Цифры — снимок на момент настройки; живые значения покажет виджет из кабинета 2ГИС. -->
     <div id="reviews-fallback" class="center" style="margin-top:24px">
-      <div class="tcard" style="max-width:560px;margin:0 auto;text-align:center">
-        <p style="font-style:normal;color:var(--muted);margin:0 0 16px">
-          Здесь появятся отзывы из 2ГИС. А пока — почитайте и оставьте отзыв на нашей странице в 2ГИС:
+      <div class="tcard" style="max-width:600px;margin:0 auto;text-align:center">
+        <div style="font-size:3.2rem;font-weight:800;color:var(--green-dark);line-height:1">4.8</div>
+        <div style="color:var(--accent);font-size:1.5rem;letter-spacing:3px;margin-top:4px">★★★★★</div>
+        <p style="font-style:normal;color:var(--muted);margin:14px 0 20px">
+          Средняя оценка <b>4.8</b> по <b>35 отзывам</b> в 2ГИС.<br>
+          Почитайте, что пишут семьи о Живой школе, и оставьте свой отзыв:
         </p>
-        <!-- TODO: подставить ссылку на карточку Живой школы в 2ГИС -->
-        <a id="gis-link" href="#" target="_blank" rel="noopener" class="btn btn--primary">Отзывы в 2ГИС ★</a>
+        <a id="gis-link" href="#" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Читать отзывы в 2ГИС →</a>
       </div>
     </div>
   </div>
@@ -400,8 +403,8 @@
      1) Укажите ссылку на карточку Живой школы в 2ГИС (для кнопки-запаски). -->
 
 <script>
-  // Ссылка на вашу организацию в 2ГИС (замените на реальную):
-  window.GIS_URL = "https://2gis.ru/tyumen";   // TODO: вставить ссылку на карточку Живой школы
+  // Карточка Живой школы в 2ГИС — вкладка отзывов:
+  window.GIS_URL = "https://2gis.ru/tyumen/firm/70000001093356612/tab/reviews";
   (function () {
     var link = document.getElementById("gis-link");
     if (link && window.GIS_URL) link.href = window.GIS_URL;
