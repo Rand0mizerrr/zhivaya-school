@@ -73,7 +73,7 @@
     if (e.key === "ArrowLeft") openLb(current - 1);
   });
 
-  // Форма заявки -> открываем WhatsApp с заполненным текстом
+  // Форма заявки -> открываем Telegram (текст заявки копируем в буфер обмена)
   var form = document.getElementById("lead-form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -85,10 +85,16 @@
         "Здравствуйте! Хочу записаться/узнать о Живой школе.\n" +
         "Имя: " + name + "\nТелефон: " + phone +
         (msg ? "\nВопрос: " + msg : "");
-      var url = "https://wa.me/79324720279?text=" + encodeURIComponent(text);
-      window.open(url, "_blank", "noopener");
-      form.reset();
-      alert("Спасибо! Откроется WhatsApp — отправьте сообщение, и мы свяжемся с вами.");
+      function go() {
+        window.open("https://t.me/+79324720279", "_blank", "noopener");
+        form.reset();
+        alert("Спасибо! Откроется Telegram, а текст заявки скопирован — вставьте его в чат и отправьте.");
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(go, go);
+      } else {
+        go();
+      }
     });
   }
 

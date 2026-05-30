@@ -299,3 +299,6 @@ p{margin:0 0 1em}
 .club__foot .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 @media(max-width:980px){.res-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.res-grid{grid-template-columns:1fr}}
+
+/* Эмблема в шапке/подвале — картинка вместо иконки */
+img.logo{object-fit:cover;background:#bcdf7b}
