@@ -282,19 +282,25 @@
   </div>
 </section>
 
-<!-- ===== Отзывы (ПЛЕЙСХОЛДЕРЫ — заменить реальными) ===== -->
+<!-- ===== Отзывы (виджет 2ГИС) ===== -->
 <section class="section section--tint" id="reviews">
   <div class="container">
     <div class="center"><span class="eyebrow">Отзывы родителей</span>
-      <h2>Что говорят семьи</h2></div>
-    <!-- TODO: заменить на реальные отзывы родителей -->
-    <div class="grid grid-3" style="margin-top:34px">
-      <div class="tcard"><p>«Здесь будет реальный отзыв родителя о школе — об атмосфере, педагогах и изменениях в ребёнке.»</p>
-        <div class="who"><span class="ava">М</span><div><b>Мама ученика</b><span>начальная школа</span></div></div></div>
-      <div class="tcard"><p>«Здесь будет реальный отзыв родителя — например, о переходе из обычной школы и адаптации.»</p>
-        <div class="who"><span class="ava">П</span><div><b>Родитель</b><span>средняя школа</span></div></div></div>
-      <div class="tcard"><p>«Здесь будет реальный отзыв родителя — о праздниках, походах и сообществе семей.»</p>
-        <div class="who"><span class="ava">С</span><div><b>Семья</b><span>наши с 2023 года</span></div></div></div>
+      <h2>Что говорят семьи — отзывы в 2ГИС</h2>
+      <p class="lead">Настоящие отзывы о Живой школе из 2ГИС. Здесь же можно оставить свой.</p></div>
+
+    <!-- Сюда подгрузится виджет отзывов 2ГИС (код подключается внизу страницы) -->
+    <div id="reviews-2gis" style="margin-top:30px"></div>
+
+    <!-- Запасной блок: показывается, пока виджет 2ГИС не настроен/не загрузился -->
+    <div id="reviews-fallback" class="center" style="margin-top:24px">
+      <div class="tcard" style="max-width:560px;margin:0 auto;text-align:center">
+        <p style="font-style:normal;color:var(--muted);margin:0 0 16px">
+          Здесь появятся отзывы из 2ГИС. А пока — почитайте и оставьте отзыв на нашей странице в 2ГИС:
+        </p>
+        <!-- TODO: подставить ссылку на карточку Живой школы в 2ГИС -->
+        <a id="gis-link" href="#" target="_blank" rel="noopener" class="btn btn--primary">Отзывы в 2ГИС ★</a>
+      </div>
     </div>
   </div>
 </section>
@@ -387,5 +393,37 @@
 </div>
 
 <script src="script.js"></script>
+
+<!-- =====================================================================
+     ОТЗЫВЫ 2ГИС — блок подключения виджета (вставлять скрипты ЗДЕСЬ, в конце страницы)
+     =====================================================================
+     1) Укажите ссылку на карточку Живой школы в 2ГИС (для кнопки-запаски). -->
+
+<script>
+  // Ссылка на вашу организацию в 2ГИС (замените на реальную):
+  window.GIS_URL = "https://2gis.ru/tyumen";   // TODO: вставить ссылку на карточку Живой школы
+  (function () {
+    var link = document.getElementById("gis-link");
+    if (link && window.GIS_URL) link.href = window.GIS_URL;
+    // Если виджет 2ГИС что-то отрисовал в #reviews-2gis — прячем запасной блок
+    var slot = document.getElementById("reviews-2gis");
+    var fb = document.getElementById("reviews-fallback");
+    setTimeout(function () {
+      if (slot && fb && slot.children.length > 0) fb.style.display = "none";
+    }, 2500);
+  })();
+</script>
+<!--
+     2) СЮДА вставьте код виджета отзывов из вашего кабинета 2ГИС
+        (account.2gis.com → бизнес-профиль → Виджеты → Отзывы → скопировать код).
+        Обычно это что-то вида:
+        <script src="https://widgets.2gis.com/...." data-...></script>
+        Виджет должен рендериться в контейнер <div id="reviews-2gis">.
+-->
+
+<!-- НАЧАЛО кода виджета 2ГИС -->
+
+<!-- КОНЕЦ кода виджета 2ГИС -->
+
 </body>
 </html>
