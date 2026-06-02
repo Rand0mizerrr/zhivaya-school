@@ -63,8 +63,8 @@ p{margin:0 0 1em}
 .header.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.06)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 20px;max-width:var(--maxw);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.2rem;color:var(--green-dark)}
-.brand .logo{width:42px;height:42px;border-radius:12px;background:var(--green);color:#fff;
-  display:grid;place-items:center;font-size:1.3rem;box-shadow:var(--shadow)}
+.brand .logo{width:42px;height:42px;border-radius:12px;background:transparent;color:#fff;
+  display:grid;place-items:center;font-size:1.3rem;box-shadow:none}
 .brand small{display:block;font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.04em}
 .menu{display:flex;gap:6px;align-items:center;list-style:none;margin:0;padding:0}
 .menu>li{position:relative}
@@ -301,4 +301,4 @@ p{margin:0 0 1em}
 @media(max-width:760px){.res-grid{grid-template-columns:1fr}}
 
 /* Эмблема в шапке/подвале — картинка вместо иконки */
-img.logo{object-fit:cover;background:#bcdf7b}
+img.logo{object-fit:contain;background:transparent}
