@@ -336,24 +336,30 @@
       <h2>Что говорят семьи — отзывы в 2ГИС</h2>
       <p class="lead">Настоящие отзывы о Живой школе из 2ГИС. Здесь же можно оставить свой.</p></div>
 
-    <!-- Живой виджет отзывов 2ГИС (код из кабинета account.2gis.com, филиал 70000001093356612) -->
-    <div id="reviews-2gis" style="margin-top:30px;display:flex;justify-content:center">
-      <iframe id="big_light_70000001093356612" frameborder="0" width="528px" height="824px" style="max-width:100%;border:0" title="Отзывы о Живой школе в 2ГИС" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe><script type="text/javascript">((r,u)=>{const l=document.getElementById(r);l.contentWindow.document.open(),l.contentWindow.document.write(decodeURIComponent(escape(atob(u)))),l.contentWindow.document.close()})("big_light_70000001093356612", "PGhlYWQ+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgogICAgd2luZG93Ll9fc2l6ZV9fPSdiaWcnOwogICAgd2luZG93Ll9fdGhlbWVfXz0nbGlnaHQnOwogICAgd2luZG93Ll9fYnJhbmNoSWRfXz0nNzAwMDAwMDEwOTMzNTY2MTInCiAgICB3aW5kb3cuX19vcmdJZF9fPSc3MDAwMDAwMTA5MzM1NjYxMScKICAgPC9zY3JpcHQ+PHNjcmlwdCBjcm9zc29yaWdpbj0iYW5vbnltb3VzIiB0eXBlPSJtb2R1bGUiIHNyYz0iaHR0cHM6Ly9kaXNrLjJnaXMuY29tL3dpZGdldC1jb25zdHJ1Y3Rvci9hc3NldHMvaWZyYW1lLmpzIj48L3NjcmlwdD48bGluayByZWw9Im1vZHVsZXByZWxvYWQiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiIGhyZWY9Imh0dHBzOi8vZGlzay4yZ2lzLmNvbS93aWRnZXQtY29uc3RydWN0b3IvYXNzZXRzL2RlZmF1bHRzLmpzIj48bGluayByZWw9InN0eWxlc2hlZXQiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiIGhyZWY9Imh0dHBzOi8vZGlzay4yZ2lzLmNvbS93aWRnZXQtY29uc3RydWN0b3IvYXNzZXRzL2RlZmF1bHRzLmNzcyI+PC9oZWFkPjxib2R5PjxkaXYgaWQ9ImlmcmFtZSI+PC9kaXY+PC9ib2R5Pg==")</script>
+    <!-- Сводка рейтинга (числа из reviews-data.js — обновляются скриптом fetch_2gis_reviews.py) -->
+    <div class="center" style="margin-top:26px">
+      <span style="font-size:2.6rem;font-weight:800;color:var(--green-dark);vertical-align:middle" id="rev-rating">4.9</span>
+      <span style="color:var(--accent);font-size:1.3rem;letter-spacing:2px;margin:0 10px;vertical-align:middle">★★★★★</span>
+      <span style="color:var(--muted);vertical-align:middle">по <b id="rev-count">22</b> отзывам в 2ГИС</span>
+      <a id="gis-link" href="#" target="_blank" rel="noopener" class="btn btn--primary" style="margin-left:16px;vertical-align:middle">Оставить отзыв в 2ГИС →</a>
     </div>
 
-    <!-- Блок с рейтингом 2ГИС. Показывается, пока не подключён полноценный виджет отзывов.
-         Цифры — снимок на момент настройки; живые значения покажет виджет из кабинета 2ГИС. -->
-    <div id="reviews-fallback" class="center" style="margin-top:24px">
-      <div class="tcard" style="max-width:600px;margin:0 auto;text-align:center">
-        <div style="font-size:3.2rem;font-weight:800;color:var(--green-dark);line-height:1">4.8</div>
-        <div style="color:var(--accent);font-size:1.5rem;letter-spacing:3px;margin-top:4px">★★★★★</div>
-        <p style="font-style:normal;color:var(--muted);margin:14px 0 20px">
-          Средняя оценка <b>4.8</b> по <b>35 отзывам</b> в 2ГИС.<br>
-          Почитайте, что пишут семьи о Живой школе, и оставьте свой отзыв:
-        </p>
-        <a id="gis-link" href="#" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Читать отзывы в 2ГИС →</a>
-      </div>
-    </div>
+    <!-- Сетка отзывов: 3 колонки (планшет 2, телефон 1), отзывы с фото — первыми -->
+    <style>
+      .rev-grid{column-count:3;column-gap:18px;margin-top:28px}
+      @media(max-width:1000px){.rev-grid{column-count:2}}
+      @media(max-width:640px){.rev-grid{column-count:1}}
+      .rev-card{break-inside:avoid;background:#fff;border-radius:14px;padding:18px 18px 16px;
+                margin:0 0 18px;box-shadow:0 2px 10px rgba(26,77,46,.07)}
+      .rev-card .stars{color:var(--accent);letter-spacing:2px;font-size:.95rem}
+      .rev-card .who{font-weight:700;color:var(--green-dark);margin-top:4px}
+      .rev-card .when{color:var(--muted);font-size:.85rem}
+      .rev-card .phs{display:flex;gap:6px;margin:10px 0 4px}
+      .rev-card .phs img{flex:1;min-width:0;height:110px;object-fit:cover;border-radius:8px}
+      .rev-card p{margin:8px 0 0;color:var(--ink,#33403a);font-size:.95rem;line-height:1.5;
+                  display:-webkit-box;-webkit-line-clamp:12;-webkit-box-orient:vertical;overflow:hidden}
+    </style>
+    <div class="rev-grid" id="rev-grid"><!-- карточки рендерит скрипт внизу страницы --></div>
   </div>
 </section>
 
@@ -543,22 +549,33 @@
      =====================================================================
      1) Укажите ссылку на карточку Живой школы в 2ГИС (для кнопки-запаски). -->
 
+<!-- Отзывы 2ГИС: данные генерирует fetch_2gis_reviews.py (отзывы + локальные фото).
+     Обновить: запустить скрипт и закоммитить reviews-data.js + img/reviews/. -->
+<script src="reviews-data.js"></script>
 <script>
-  // Карточка Живой школы в 2ГИС — вкладка отзывов:
-  window.GIS_URL = "https://2gis.ru/tyumen/firm/70000001093356612/tab/reviews";
   (function () {
+    var GIS_URL = "https://2gis.ru/tyumen/firm/70000001093356612/tab/reviews";
     var link = document.getElementById("gis-link");
-    if (link && window.GIS_URL) link.href = window.GIS_URL;
-    // Если виджет 2ГИС что-то отрисовал в #reviews-2gis — прячем запасной блок
-    var slot = document.getElementById("reviews-2gis");
-    var fb = document.getElementById("reviews-fallback");
-    setTimeout(function () {
-      if (slot && fb && slot.children.length > 0) fb.style.display = "none";
-    }, 2500);
+    if (link) link.href = GIS_URL;
+    var data = window.GIS_REVIEWS;
+    var grid = document.getElementById("rev-grid");
+    if (!data || !grid) return;
+    if (data.rating) document.getElementById("rev-rating").textContent = data.rating;
+    if (data.count) document.getElementById("rev-count").textContent = data.count;
+    function esc(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
+    grid.innerHTML = data.reviews.map(function (r) {
+      var stars = "★★★★★".slice(0, Math.round(r.rating)) ;
+      var phs = (r.photos && r.photos.length)
+        ? '<div class="phs">' + r.photos.map(function (p) {
+            return '<img src="' + p + '" loading="lazy" alt="Фото из отзыва — ' + esc(r.name) + '">';
+          }).join("") + "</div>" : "";
+      return '<div class="rev-card"><span class="stars">' + stars + '</span>' +
+             '<div class="who">' + esc(r.name) + '</div>' +
+             '<div class="when">' + esc(r.date) + ' · 2ГИС</div>' + phs +
+             '<p>' + esc(r.text) + '</p></div>';
+    }).join("");
   })();
 </script>
-<!-- Виджет отзывов 2ГИС установлен ВЫШЕ — прямо в секции #reviews (iframe big/light из
-     кабинета account.2gis.com). Перегенерировать размер/тему: кабинет → Отзывы → виджет. -->
 
 </body>
 </html>
