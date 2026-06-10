@@ -336,8 +336,10 @@
       <h2>Что говорят семьи — отзывы в 2ГИС</h2>
       <p class="lead">Настоящие отзывы о Живой школе из 2ГИС. Здесь же можно оставить свой.</p></div>
 
-    <!-- Сюда подгрузится виджет отзывов 2ГИС (код подключается внизу страницы) -->
-    <div id="reviews-2gis" style="margin-top:30px"></div>
+    <!-- Живой виджет отзывов 2ГИС (код из кабинета account.2gis.com, филиал 70000001093356612) -->
+    <div id="reviews-2gis" style="margin-top:30px;display:flex;justify-content:center">
+      <iframe id="big_light_70000001093356612" frameborder="0" width="528px" height="824px" style="max-width:100%;border:0" title="Отзывы о Живой школе в 2ГИС" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe><script type="text/javascript">((r,u)=>{const l=document.getElementById(r);l.contentWindow.document.open(),l.contentWindow.document.write(decodeURIComponent(escape(atob(u)))),l.contentWindow.document.close()})("big_light_70000001093356612", "PGhlYWQ+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPgogICAgd2luZG93Ll9fc2l6ZV9fPSdiaWcnOwogICAgd2luZG93Ll9fdGhlbWVfXz0nbGlnaHQnOwogICAgd2luZG93Ll9fYnJhbmNoSWRfXz0nNzAwMDAwMDEwOTMzNTY2MTInCiAgICB3aW5kb3cuX19vcmdJZF9fPSc3MDAwMDAwMTA5MzM1NjYxMScKICAgPC9zY3JpcHQ+PHNjcmlwdCBjcm9zc29yaWdpbj0iYW5vbnltb3VzIiB0eXBlPSJtb2R1bGUiIHNyYz0iaHR0cHM6Ly9kaXNrLjJnaXMuY29tL3dpZGdldC1jb25zdHJ1Y3Rvci9hc3NldHMvaWZyYW1lLmpzIj48L3NjcmlwdD48bGluayByZWw9Im1vZHVsZXByZWxvYWQiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiIGhyZWY9Imh0dHBzOi8vZGlzay4yZ2lzLmNvbS93aWRnZXQtY29uc3RydWN0b3IvYXNzZXRzL2RlZmF1bHRzLmpzIj48bGluayByZWw9InN0eWxlc2hlZXQiIGNyb3Nzb3JpZ2luPSJhbm9ueW1vdXMiIGhyZWY9Imh0dHBzOi8vZGlzay4yZ2lzLmNvbS93aWRnZXQtY29uc3RydWN0b3IvYXNzZXRzL2RlZmF1bHRzLmNzcyI+PC9oZWFkPjxib2R5PjxkaXYgaWQ9ImlmcmFtZSI+PC9kaXY+PC9ib2R5Pg==")</script>
+    </div>
 
     <!-- Блок с рейтингом 2ГИС. Показывается, пока не подключён полноценный виджет отзывов.
          Цифры — снимок на момент настройки; живые значения покажет виджет из кабинета 2ГИС. -->
@@ -555,17 +557,8 @@
     }, 2500);
   })();
 </script>
-<!--
-     2) СЮДА вставьте код виджета отзывов из вашего кабинета 2ГИС
-        (account.2gis.com → бизнес-профиль → Виджеты → Отзывы → скопировать код).
-        Обычно это что-то вида:
-        <script src="https://widgets.2gis.com/...." data-...></script>
-        Виджет должен рендериться в контейнер <div id="reviews-2gis">.
--->
-
-<!-- НАЧАЛО кода виджета 2ГИС -->
-
-<!-- КОНЕЦ кода виджета 2ГИС -->
+<!-- Виджет отзывов 2ГИС установлен ВЫШЕ — прямо в секции #reviews (iframe big/light из
+     кабинета account.2gis.com). Перегенерировать размер/тему: кабинет → Отзывы → виджет. -->
 
 </body>
 </html>
