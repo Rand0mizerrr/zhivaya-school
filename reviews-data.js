@@ -2,7 +2,6 @@
 window.GIS_REVIEWS = {
  "rating": 4.9,
  "count": 22,
- "updated": "2026-06-10",
  "reviews": [
   {
    "name": "Максим Скрябин",
