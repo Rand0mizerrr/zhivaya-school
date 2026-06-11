@@ -563,7 +563,7 @@
     if (data.rating) document.getElementById("rev-rating").textContent = data.rating;
     if (data.count) document.getElementById("rev-count").textContent = data.count;
     function esc(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
-    grid.innerHTML = data.reviews.map(function (r) {
+    grid.innerHTML = data.reviews.filter(function (r) { return r.photos && r.photos.length; }).map(function (r) {
       var stars = "★★★★★".slice(0, Math.round(r.rating)) ;
       var phs = (r.photos && r.photos.length)
         ? '<div class="phs">' + r.photos.map(function (p) {
